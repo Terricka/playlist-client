@@ -1,2 +1,8 @@
+<button mat-button color="primary" (click)="getPlaylists();">Get Playlists</button>
 
+<div *ngIf="playlists">
+    <div *ngFor="let playlist of playlists; let i = index">
+        {{ (i + 1) + '.'}} {{ playlist.title + ' - ' + playlist.genre}}
+    </div>
+</div>
 <router-outlet></router-outlet>

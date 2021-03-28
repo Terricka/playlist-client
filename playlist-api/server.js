@@ -19,7 +19,8 @@ database: "PlaylistApp", "options": {
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:3000"
+  origin: "*",
+  "Access-Control-Allow-Origin": "*"
 };
 
 app.use(cors(corsOptions));
