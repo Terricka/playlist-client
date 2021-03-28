@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api/api.service';
+import { Playlist } from './models';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { ApiService } from './api/api.service';
 })
 export class AppComponent {
   title = 'Playlist';
-  playlists: any[] = [];
+  playlists: Playlist[] = [];
 
   constructor(
     private api: ApiService
