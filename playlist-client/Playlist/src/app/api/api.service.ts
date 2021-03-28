@@ -16,4 +16,8 @@ export class ApiService {
   getPlaylists(): Observable<any> {
     return this.http.get(this.URL);
   }
+
+  getPlaylist(id: number): Observable<any> {
+    return this.http.get(this.URL + '/' + id);
+  }
 }

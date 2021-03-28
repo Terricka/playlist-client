@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Playlist application." });
 });
 
-//GET API
+//GET PLAYLISTS
 app.get("/api/v1/playlists", function(req , res){
 	// getPlaylists().then(resp => {
     //     res.send(resp)
@@ -67,9 +67,37 @@ app.get("/api/v1/playlists", function(req , res){
         console.log(err);
     });
 });
-function getPlaylists() {
+
+
+//GET PLAYLIST
+app.get("/api/v1/playlists/:id", function(req , res){
+	// getPlaylists().then(resp => {
+    //     res.send(resp)
+    // })
+
+    console.log('request', req.params.id)
+    // console.log(res)
+
+    console.log('getting 1')
+    var dbConn = new sql.ConnectionPool(dbConfig);
+    dbConn.connect().then(function () {
+        var request = new sql.Request(dbConn);
+        request.query("select * from playlists where id=" + req.params.id).then(function (resp) {
+            console.log(resp, 'here');
+            dbConn.close();
+            res.send(resp.recordset)
+        }).catch(function (err) {
+            console.log(err);
+            dbConn.close();
+        });
+    }).catch(function (err) {
+        console.log(err);
+    });
+});
+
+// function getPlaylist() {
    
-}
+// }
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

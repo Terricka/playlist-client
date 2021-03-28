@@ -1,8 +1,16 @@
 <button mat-button color="primary" (click)="getPlaylists();">Get Playlists</button>
 
+<button mat-button color="primary" (click)="getPlaylist(1);">Get Single Playlist</button>
+
+<button mat-button color="primary" (click)="getPlaylist(2);">Get Second Playlist</button>
+
 <div *ngIf="playlists">
     <div *ngFor="let playlist of playlists; let i = index">
         {{ (i + 1) + '.'}} {{ playlist.title + ' - ' + playlist.genre}}
     </div>
+</div>
+
+<div *ngIf="singlePlaylist">
+    {{ singlePlaylist.title + ' - ' + singlePlaylist.genre}}
 </div>
 <router-outlet></router-outlet>
